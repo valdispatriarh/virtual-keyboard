@@ -21,6 +21,7 @@
 }
 .push{
     background-color: yellowgreen;
+    border-radius:20% ;
 }
 .by{
     width: 50px;
@@ -28,6 +29,7 @@
     border: 1px solid black;
     padding: 5px;
     margin: 5px;
+    float:left;
    
 }
 .kas{
