@@ -27,9 +27,18 @@ for (let i=0; i < keyb.length; i++){
   if (i==26){v28 += '<div class="fix"></div>';}
   if (i==37){v28 += '<div class="fix"></div>';}
 
-v28 += '<div class="btn">'+ String.fromCharCode(keyb[i]) +'</div>';
+v28 += '<div  id="b1" class="btn" data="'+keyb[i]+'">'+ String.fromCharCode(keyb[i]) +'</div>';
 }
 document.querySelector("#qwe").innerHTML = v28;
 }v27();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+document.onkeypress = function (event){
+   
+    console.log(event.code);
+    console.log(event.keyCode);
+    document.querySelectorAll('#qwe .btn').forEach(function(element){
+    element.classList.remove('push');
+    });
+    document.querySelector('#qwe .btn[data="' + event.keyCode + '"]').classList.add('push')
+}
