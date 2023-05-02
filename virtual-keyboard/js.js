@@ -102,11 +102,11 @@ btnClick()
 
 
 
-let keyHard = [];
-document.onkeypress = function (event){
-keyHard.push(event.code);
-console.log(keyHard);
-    }
+// let keyHard = [];
+// document.onkeypress = function (event){
+// keyHard.push(event.code);
+// console.log(keyHard);
+//     }
 
 
 
