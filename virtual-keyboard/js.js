@@ -19,8 +19,9 @@ document.body.onload = addElement();
     newDiv.classList.toggle('klava')
     newLen.classList.toggle('by')
     newKas.classList.toggle('kas')
+    newKas.setAttribute('id','as')
     newDiv.setAttribute('id','qwe')
-    newKas.innerHTML = "Клавиатуру буду ещё доделывать 04-05-23, если будет возможность посмотреть ещё раз 04-05-23, отпишите пожалуйста об этом. Клавиатура создана в операционной системе Windows. Для переключения языка отдельная кнопка EN/BY. Для ввода/удаления букв в эту область нужно поставить курсор в нужное место. Проверить работоспособность by раскладки можно и на русской раскладке не будут подсвечиваться три буквы щ,и,ъ.";
+    // newKas.innerHTML = "Клавиатуру буду ещё доделывать 04-05-23, если будет возможность посмотреть ещё раз 04-05-23, отпишите пожалуйста об этом. Клавиатура создана в операционной системе Windows. Для переключения языка отдельная кнопка EN/BY. Для ввода/удаления букв в эту область нужно поставить курсор в нужное место. Проверить работоспособность by раскладки можно и на русской раскладке не будут подсвечиваться три буквы щ,и,ъ.";
     
     newTab.classList.toggle('by')
     newTab.setAttribute('id','tab')
@@ -59,6 +60,7 @@ by.addEventListener('click', function(){
   }
  v27()
  btnClick()
+ 
   by.classList.toggle('push')
 }
 )
@@ -76,16 +78,26 @@ document.querySelector("#qwe").innerHTML = v28;
 }v27();
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+let a = ''
+const keyPressEvent = (e) => {
+  const ta = document.querySelector('#as');
+  //a += e.target
+  console.log(e.target)
+  ta.textContent = a
+}
 document.onkeypress = function (event){
-   
+
     document.querySelectorAll('#qwe .btn').forEach(function(element){
+      element.addEventListener('onkeypress', keyPressEvent) 
     element.classList.remove('push');
     });
     document.querySelector('#qwe .btn[data="' + event.keyCode + '"]').classList.add('push')
 }
+
 const onClickHandler = (event) => {
-
-
+ const ta = document.querySelector('#as');
+  a += event.target.textContent
+  ta.textContent = a
 }
 const btnClick = () => {
   document.querySelectorAll('#qwe .btn').forEach(function(element){
@@ -94,15 +106,40 @@ const btnClick = () => {
       document.querySelectorAll('#qwe .btn').forEach(function(element){
         element.classList.remove('push');
         });
+        
         let code = this.getAttribute('data')
         this.classList.add('push')
+        
     }})
+   
 } 
-btnClick()
+btnClick();
+// let a = '';
+// const ta = document.querySelector('#as');
+// // ta.focus();
+// document.querySelector(".btn").onclick = (event) =>{
+// ta.textContent =''; 
+// const keyy = event.target.textContent;
+// console.log(keyy);
+// a += keyy;
+// console.log(keyy);
+// ta.textContent = a;}
 
 
 
-// let keyHard = [];
+
+
+// const area = document.querySelector('.kas');
+
+//     const cursorHandler = (event) => {
+//       document.dispatchEvent(new KeyboardEvent('keyup', { code: event.target.getAttribute('name') }));
+//       event.target.removeEventListener('mouseup', cursorHandler);
+//       event.target.removeEventListener('mouseout', cursorHandler);
+//       area.focus();
+//     };
+
+
+
 // document.onkeypress = function (event){
 // keyHard.push(event.code);
 // console.log(keyHard);
@@ -110,12 +147,7 @@ btnClick()
 
 
 
-//   // let keyb = [];
 
-//   // document.onkeypress = function (event){
-//   //     keyb.push(event.charCode);
-//   //     console.log(keyb);
-//   // }
 ///////////////////////////////////
 /////////////////////////////////////
 //////////////////////////////////////
